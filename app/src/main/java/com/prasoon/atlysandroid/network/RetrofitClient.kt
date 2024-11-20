@@ -10,15 +10,17 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitClient {
-    private const val BASE_URL = "https://api.themoviedb.org/3/"
+    const val API_KEY = "e4ca6605cd6999cdb956f2fc3695cecf"
+    const val BASE_URL_MOVIE = "https://api.themoviedb.org/3/"
+    const val BASE_URL_IMAGE = "https://image.tmdb.org/t/p/w500/"
 
-    fun getRetrofitInstance(): Retrofit {
+    fun getRetrofitInstance(baseUrl: String): Retrofit {
         val client = OkHttpClient()
         val interceptor = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
         val clientBuilder: OkHttpClient.Builder =
             client.newBuilder().addInterceptor(interceptor)
 
-        return Retrofit.Builder().baseUrl(BASE_URL)
+        return Retrofit.Builder().baseUrl(baseUrl)
             .addConverterFactory(GsonConverterFactory.create())
             .client(clientBuilder.build())
             .build()

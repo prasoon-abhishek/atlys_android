@@ -14,7 +14,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.prasoon.atlysandroid.ui.theme.AtlysAndroidTheme
 import com.prasoon.atlysandroid.vm.MovieViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     private val vm by viewModels<MovieViewModel>()
 
